@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html">
+ 
+    <h:head>
+        <title>Welcome to APG Web Shop</title>
+    </h:head>
+    <h:body>
+    	<h3>Check out </h3>
+    	<h:form style="float:right !important;margin:0px 0px 3px 0px;">
+    	   #{login.getUsername()}  <h:commandLink value="Log out" action="#{login.logout}" />
+    	</h:form>
+		<h:form id="basket_list">	  	
+    	<h:dataTable value="#{login.basket}" var="basketItems" binding="#{login.checkoutTableItems}">
+    		<h:column>
+				<f:facet name="header" >
+					<h:outputText value="Item Category"/>
+				</f:facet>
+				<h:outputText value="#{basketItems.category}"/>
+			</h:column>
+    		<h:column>
+				<f:facet name="header" >
+					<h:outputText value="Item Name"/>
+				</f:facet>
+				<h:outputText value="#{basketItems.name}"/>
+			</h:column>
+			    		<h:column>
+				<f:facet name="header" >
+					<h:outputText value="Item Price"/>
+				</f:facet>
+				<h:outputText value="#{basketItems.price}"/>
+			</h:column>
+			    		<h:column>
+				<f:facet name="header" >
+					<h:outputText value="Amount"/>
+				</f:facet>
+				<h:outputText value="#{basketItems.amount}"/>
+			</h:column>
+			<h:column>
+               <f:facet name="header">
+                   <h:outputText value="Delete"/>
+               </f:facet>
+               <h:commandButton value="Remove" action="#{login.removeFromBasket}"></h:commandButton>            
+           </h:column>
+
+    	</h:dataTable>
+    	<h:commandButton value="Buy" action="#{login.buy}"></h:commandButton>
+    	<h:commandButton value="Go back shopping" action="welcome"></h:commandButton>
+    	</h:form>
+    </h:body>
+</html>

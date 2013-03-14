@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html">
+ 
+    <h:head>
+        <title>Welcome to APG Web Shop</title>
+    </h:head>
+    <h:body>
+    	<h3>Welcome to Admin Page</h3>
+    	<h:form style="float:right !important;margin:0px 0px 3px 0px;">
+    	   #{login.getUsername()}  <h:commandLink value="Log out" action="#{login.logout}" />
+    	</h:form>
+    	<h:form>
+    	   Name: <h:inputText value="#{login.item_name}"></h:inputText>
+    	   Price: <h:inputText value="#{login.item_price}"></h:inputText>
+    	   Amount: <h:inputText value="#{login.item_amount}"></h:inputText>
+    	   <h:selectOneMenu value="#{login.item_cat}">
+			   	<f:selectItem itemValue="photo" itemLabel="Photo" />
+			   	<f:selectItem itemValue="personal" itemLabel="Personal" />
+			   	<f:selectItem itemValue="computer" itemLabel="Computer" />
+			</h:selectOneMenu>
+    	   <h:commandButton value="Add" action="#{login.addNewItem}"></h:commandButton>
+    	</h:form>
+
+    	<h:form id="item_list" rendered="#{login.itemListVisible}">
+    	<h:dataTable value="#{login.items}" var="items" binding="#{login.dataTableItems}">
+    		<h:column>
+				<f:facet name="header" >
+					<h:outputText value="Item Category"/>
+				</f:facet>
+				<h:outputText value="#{items.category}"/>
+			</h:column>
+    		<h:column>
+				<f:facet name="header" >
+					<h:outputText value="Item Name"/>
+				</f:facet>
+				<h:outputText value="#{items.name}"/>
+			</h:column>
+			<h:column>
+				<f:facet name="header" >
+					<h:outputText value="Item Price"/>
+				</f:facet>
+				<h:inputText value="#{items.price}"/>
+			</h:column>
+			<h:column>
+				<f:facet name="header" >
+					<h:outputText value="Amount"/>
+				</f:facet>
+				<h:inputText value="#{items.amount}"/>
+			</h:column>
+			<h:column>
+               <f:facet name="header">
+                   <h:outputText value="Edit"/>
+               </f:facet>
+               <h:commandButton value="Update" action="#{login.update}"></h:commandButton>            
+           </h:column>
+           <h:column>
+               <f:facet name="header">
+                   <h:outputText value="Delete"/>
+               </f:facet>
+               <h:commandButton value="Remove" action="#{login.deleteItem}"></h:commandButton>            
+           </h:column>
+    	</h:dataTable>
+    	</h:form>
+    	
+    	<h:form id="user_list" rendered="#{login.userListVisible}">
+    	<h:dataTable value="#{login.userList}" var="users" binding="#{login.dataTableUsers}">
+    		<h:column>
+				<f:facet name="header" >
+					<h:outputText value="Username"/>
+				</f:facet>
+				<h:outputText value="#{users.username}"/>
+			</h:column>
+    		<h:column>
+				<f:facet name="header" >
+					<h:outputText value="Active"/>
+				</f:facet>
+				<h:selectBooleanCheckbox value="#{users.isActive}"/>
+			</h:column>
+			<h:column>
+               <f:facet name="header">
+                   <h:outputText value="Edit"/>
+               </f:facet>
+               <h:commandButton value="Update" action="#{login.update}"></h:commandButton>            
+           </h:column>
+	
+    	</h:dataTable>
+    	</h:form>
+
+    </h:body>
+</html>

@@ -1,0 +1,26 @@
+ID,AMOUNT,CATEGORY,NAME,PRICE
+2,1,photo,camera,100
+3,2,computer,console,600
+4,19,computer,mouse,400
+5,30,computer,keyboard,250
+6,0,personal,tshirt,10
+7,24,photo,lens,1000
+8,87,photo,"canon eos 600D",4500
+9,100,photo,"nikon D3100",4300
+10,24,photo,"nikon D3200",4700
+11,23,photo,"canon eos 650D",4700
+12,16,photo,"canon eos 60D",5000
+13,15,photo,"sd card",99
+14,45,photo,"keyboard 2",199
+15,5,personal,tshirt2,15
+16,1,personal,"baseball hat",150
+17,1,personal,jeans2,55
+18,1,personal,jeans3,60
+19,1,personal,jeans4,61
+20,2,personal,jeans5,100
+21,1,personal,jeans6,120
+22,12,personal,jeans7,111
+23,14,photo,camera3,1000
+24,11,photo,camera4,111
+25,13,photo,camera5,1111
+26,15,personal,testItem,1122
